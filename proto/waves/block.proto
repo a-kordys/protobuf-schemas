@@ -22,7 +22,8 @@ message Block {
 
     Header header = 1;
     bytes signature = 2;
-    repeated SignedTransaction transactions = 3;
+    repeated SignedTransaction waves_transactions = 3;
+    repeated TransactionWrapper wrapped_transactions = 4;
 }
 
 message MicroBlock {
@@ -30,7 +31,8 @@ message MicroBlock {
     bytes reference = 2;
     bytes updated_block_signature = 3;
     bytes sender_public_key = 4;
-    repeated SignedTransaction transactions = 5;
+    repeated SignedTransaction waves_transactions = 5;
+    repeated TransactionWrapper wrapped_transactions = 6;
 }
 
 message SignedMicroBlock {
