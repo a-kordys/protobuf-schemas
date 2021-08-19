@@ -10,15 +10,11 @@ import "waves/recipient.proto";
 import "waves/order.proto";
 
 message SignedTransaction {
-    Transaction transaction = 1;
-    repeated bytes proofs = 2;
-}
-
-message TransactionWrapper {
     oneof transaction {
-        SignedTransaction waves_transaction = 1;
-        bytes ethereum_transaction = 2;
+        Transaction waves_transaction = 1;
+        bytes ethereum_transaction = 3;
     }
+    repeated bytes proofs = 2;
 }
 
 message Transaction {
