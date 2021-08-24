@@ -142,7 +142,8 @@ message TransactionMetadata {
         TransferMetadata transfer = 104;
         MassTransferMetadata mass_transfer = 111;
         InvokeScriptMetadata invoke_script = 116;
-        LeaseMetadata lease_meta = 117;
+        LeaseMetadata lease = 117;
+        EthereumMetadata ethereum = 301;
     };
 
     // message <TransactionName>Metadata { ... }
@@ -160,6 +161,7 @@ message TransactionMetadata {
         repeated Argument arguments = 3;
         repeated Amount payments = 4;
         InvokeScriptResult result = 5;
+        bytes sender_address = 6;
 
         message Argument {
             message List {
@@ -178,5 +180,14 @@ message TransactionMetadata {
 
     message LeaseMetadata {
         bytes recipient_address = 1;
+    }
+
+    message EthereumMetadata {
+        bytes sender_address = 1;
+
+        oneof Action {
+            TransferMetadata transfer = 10;
+            InvokeScriptMetadata invoke = 11;
+        }
     }
 }
